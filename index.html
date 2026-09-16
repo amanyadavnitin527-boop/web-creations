@@ -1,99 +1,472 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For You ❤️</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Little Something For You ✨</title>
 
-    <style>
-        * {
-            box-sizing: border-box;
-        }
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-        body {
-            margin: 0;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: linear-gradient(135deg, #ffd6e7, #e7d9ff);
-            font-family: Arial, sans-serif;
-            overflow: hidden;
-        }
+body{
+    overflow:hidden;
+    background:#05050b;
+    color:white;
+    font-family:Georgia,serif;
+}
 
-        .card {
-            text-align: center;
-            background: rgba(255, 255, 255, 0.9);
-            padding: 40px 30px;
-            border-radius: 25px;
-            box-shadow: 0 10px 35px rgba(0,0,0,0.15);
-            max-width: 420px;
-        }
+.slide{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    opacity:0;
+    visibility:hidden;
+    transform:scale(1.04);
+    transition:1.2s ease;
+}
 
-        .heart {
-            font-size: 90px;
-            animation: beat 1s infinite;
-        }
+.slide.active{
+    opacity:1;
+    visibility:visible;
+    transform:scale(1);
+}
 
-        @keyframes beat {
-            0%, 100% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.25);
-            }
-        }
+.background{
+    position:absolute;
+    inset:0;
+    background:
+    radial-gradient(circle at 50% 45%,#35183d 0%,#100d19 35%,#05050b 75%);
+}
 
-        h1 {
-            color: #d6336c;
-        }
+.stars{
+    position:absolute;
+    inset:0;
+    background-image:
+    radial-gradient(circle,#ffffff 1px,transparent 1px);
+    background-size:90px 90px;
+    opacity:.3;
+}
 
-        p {
-            color: #555;
-            font-size: 18px;
-            line-height: 1.6;
-        }
+/* SLIDE 1 */
 
-        button {
-            border: none;
-            padding: 12px 24px;
-            border-radius: 25px;
-            background: #d6336c;
-            color: white;
-            font-size: 16px;
-            cursor: pointer;
-        }
+.intro{
+    position:relative;
+    z-index:2;
+    padding:25px;
+}
 
-        button:hover {
-            transform: scale(1.05);
-        }
-    </style>
+.mini{
+    font-size:11px;
+    letter-spacing:5px;
+    color:#cfa6df;
+    margin-bottom:25px;
+}
+
+.intro h1{
+    font-size:clamp(45px,10vw,80px);
+    font-weight:normal;
+    font-style:italic;
+    color:#f1d5ff;
+    text-shadow:0 0 30px #9d55b5;
+}
+
+.heart{
+    font-size:55px;
+    margin:25px 0;
+    animation:heartBeat 2s infinite;
+}
+
+.intro p{
+    color:#c9c0cc;
+    line-height:2;
+    font-size:16px;
+}
+
+.open{
+    margin-top:35px;
+    padding:13px 28px;
+    border:1px solid #9d7aaa;
+    background:transparent;
+    color:white;
+    border-radius:30px;
+    cursor:pointer;
+    letter-spacing:2px;
+    transition:.4s;
+}
+
+.open:hover{
+    background:#ffffff12;
+    transform:scale(1.08);
+}
+
+/* SLIDE 2 */
+
+.photoBox{
+    position:relative;
+    z-index:3;
+    width:min(86%,390px);
+}
+
+.photoFrame{
+    background:#f5f1eb;
+    padding:10px 10px 45px;
+    box-shadow:0 20px 60px #000;
+    transform:rotate(-2deg);
+    animation:photoAppear 1.5s ease;
+}
+
+.photoFrame img{
+    display:block;
+    width:100%;
+    height:430px;
+    object-fit:cover;
+}
+
+.caption{
+    color:#222;
+    font-size:23px;
+    font-family:cursive;
+    margin-top:12px;
+}
+
+.message{
+    margin-top:30px;
+    color:#ddd;
+    font-size:16px;
+    line-height:1.9;
+}
+
+.message span{
+    color:#e5aef6;
+}
+
+.next{
+    margin-top:25px;
+    background:transparent;
+    color:white;
+    border:1px solid #777;
+    border-radius:25px;
+    padding:11px 23px;
+    cursor:pointer;
+}
+
+/* SLIDE 3 TREE */
+
+.treeScene{
+    position:relative;
+    z-index:3;
+    width:100%;
+    height:100%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+}
+
+.treeTitle{
+    position:absolute;
+    top:9%;
+    color:#dcb6e8;
+    font-size:18px;
+    letter-spacing:3px;
+}
+
+.tree{
+    position:relative;
+    width:330px;
+    height:500px;
+}
+
+/* trunk */
+
+.trunk{
+    position:absolute;
+    width:16px;
+    height:250px;
+    bottom:90px;
+    left:157px;
+    background:linear-gradient(to right,#543b1c,#9a6427,#553715);
+    transform-origin:bottom;
+    transform:scaleY(0);
+    animation:growTrunk 4s ease forwards;
+}
+
+/* branches */
+
+.branch{
+    position:absolute;
+    height:8px;
+    background:#6bb82d;
+    transform-origin:left center;
+    border-radius:10px;
+    opacity:0;
+    animation:branchGrow 2s ease forwards;
+}
+
+.b1{
+    width:115px;
+    left:160px;
+    bottom:270px;
+    transform:rotate(-35deg) scaleX(0);
+    animation-delay:3.1s;
+}
+
+.b2{
+    width:115px;
+    left:160px;
+    bottom:310px;
+    transform:rotate(35deg) scaleX(0);
+    animation-delay:3.3s;
+}
+
+.b3{
+    width:90px;
+    left:160px;
+    bottom:350px;
+    transform:rotate(-55deg) scaleX(0);
+    animation-delay:3.5s;
+}
+
+.b4{
+    width:90px;
+    left:160px;
+    bottom:375px;
+    transform:rotate(55deg) scaleX(0);
+    animation-delay:3.7s;
+}
+
+/* flowers */
+
+.flower{
+    position:absolute;
+    font-size:27px;
+    opacity:0;
+    transform:scale(0);
+    animation:bloom 1s ease forwards;
+}
+
+.f1{left:65px;top:100px;animation-delay:4.2s}
+.f2{left:115px;top:70px;animation-delay:4.4s}
+.f3{left:165px;top:55px;animation-delay:4.6s}
+.f4{left:210px;top:75px;animation-delay:4.8s}
+.f5{left:255px;top:105px;animation-delay:5s}
+.f6{left:100px;top:125px;animation-delay:5.2s}
+.f7{left:205px;top:125px;animation-delay:5.4s}
+.f8{left:145px;top:105px;animation-delay:5.6s}
+
+.roots{
+    position:absolute;
+    bottom:65px;
+    left:105px;
+    width:110px;
+    height:45px;
+    border-bottom:2px solid #8e712d;
+    border-radius:50%;
+    opacity:0;
+    animation:roots 2s ease 2.5s forwards;
+}
+
+.finalText{
+    position:absolute;
+    bottom:6%;
+    font-size:14px;
+    color:#c8b8ca;
+    line-height:1.8;
+}
+
+/* ANIMATIONS */
+
+@keyframes heartBeat{
+    0%,100%{transform:scale(1)}
+    50%{transform:scale(1.18)}
+}
+
+@keyframes photoAppear{
+    from{
+        opacity:0;
+        transform:rotate(-8deg) translateY(60px) scale(.8);
+    }
+    to{
+        opacity:1;
+        transform:rotate(-2deg) translateY(0) scale(1);
+    }
+}
+
+@keyframes growTrunk{
+    from{transform:scaleY(0)}
+    to{transform:scaleY(1)}
+}
+
+@keyframes branchGrow{
+    from{
+        opacity:0;
+        transform:scaleX(0);
+    }
+    to{
+        opacity:1;
+        transform:scaleX(1);
+    }
+}
+
+@keyframes bloom{
+    from{
+        opacity:0;
+        transform:scale(0) rotate(-30deg);
+    }
+    to{
+        opacity:1;
+        transform:scale(1) rotate(0);
+    }
+}
+
+@keyframes roots{
+    from{opacity:0;transform:scale(.2)}
+    to{opacity:1;transform:scale(1)}
+}
+</style>
 </head>
 
 <body>
 
-    <div class="card">
-        <div class="heart">❤️</div>
+<!-- SLIDE 1 -->
 
-        <h1>Hey, Smile 😊</h1>
+<section class="slide active" id="slide1">
+
+    <div class="background"></div>
+    <div class="stars"></div>
+
+    <div class="intro">
+
+        <div class="mini">
+            A LITTLE SOMETHING
+        </div>
+
+        <h1>This is for you</h1>
+
+        <div class="heart">♡</div>
 
         <p>
-            I know today might not be your best day,
-            but just remember that things will get better.
-            Take a deep breath and keep smiling. 🌸
+            Main tumhare saamne aakar<br>
+            kuch de nahi paa raha hoon...
+            <br><br>
+            isliye socha,<br>
+            <b>kuch chhota sa yahin bana doon. ✨</b>
         </p>
 
-        <button onclick="showMessage()">Click Here ✨</button>
+        <button class="open" onclick="showSlide(2)">
+            OPEN ✦
+        </button>
 
-        <p id="message"></p>
     </div>
+</section>
 
-    <script>
-        function showMessage() {
-            document.getElementById("message").innerHTML =
-                "You deserve a little happiness today. ❤️";
-        }
-    </script>
+
+<!-- SLIDE 2 -->
+
+<section class="slide" id="slide2">
+
+    <div class="background"></div>
+    <div class="stars"></div>
+
+    <div class="photoBox">
+
+        <div class="photoFrame">
+
+            <img src="sangam.jpg" alt="Sangam">
+
+            <div class="caption">
+                For you, Sangam ✨
+            </div>
+
+        </div>
+
+        <div class="message">
+
+            Itni door rehkar bhi<br>
+            main tumhe koi flower ya gift nahi de paa raha...
+            <br><br>
+
+            To ye chhota sa
+            <span>digital flower</span>
+            meri taraf se. 🌸
+
+        </div>
+
+        <button class="next" onclick="showSlide(3)">
+            WAIT... THERE'S MORE →
+        </button>
+
+    </div>
+</section>
+
+
+<!-- SLIDE 3 -->
+
+<section class="slide" id="slide3">
+
+    <div class="background"></div>
+    <div class="stars"></div>
+
+    <div class="treeScene">
+
+        <div class="treeTitle">
+            MADE JUST FOR YOU ✦
+        </div>
+
+        <div class="tree">
+
+            <div class="trunk"></div>
+
+            <div class="branch b1"></div>
+            <div class="branch b2"></div>
+            <div class="branch b3"></div>
+            <div class="branch b4"></div>
+
+            <div class="roots"></div>
+
+            <div class="flower f1">🌸</div>
+            <div class="flower f2">🌷</div>
+            <div class="flower f3">🌸</div>
+            <div class="flower f4">🌺</div>
+            <div class="flower f5">🌸</div>
+            <div class="flower f6">🌷</div>
+            <div class="flower f7">🌸</div>
+            <div class="flower f8">🌺</div>
+
+        </div>
+
+        <div class="finalText">
+            Kuch bada nahi...<br>
+            bas ek chhoti si cheez, distance ke paar se. ♡
+        </div>
+
+    </div>
+</section>
+
+
+<script>
+
+function showSlide(number){
+
+    document.querySelectorAll(".slide").forEach(function(slide){
+        slide.classList.remove("active");
+    });
+
+    document
+        .getElementById("slide"+number)
+        .classList.add("active");
+}
+
+</script>
 
 </body>
 </html>
