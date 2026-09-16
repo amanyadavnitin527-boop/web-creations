@@ -1,0 +1,1216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Mahima Ji ♡</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,body{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    background:#02030a;
+    font-family:Georgia,"Times New Roman",serif;
+}
+
+body{
+    color:white;
+}
+
+/* =========================
+   SLIDES
+========================= */
+
+.slide{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    opacity:0;
+    visibility:hidden;
+    transform:scale(1.04);
+    transition:opacity 1.5s ease, transform 1.8s ease;
+}
+
+.slide.active{
+    opacity:1;
+    visibility:visible;
+    transform:scale(1);
+}
+
+
+/* =========================
+   COMMON COSMIC BACKGROUND
+========================= */
+
+.cosmos{
+    position:absolute;
+    inset:0;
+    overflow:hidden;
+    background:
+        radial-gradient(circle at 50% 45%,
+        rgba(48,35,85,.35),
+        transparent 30%),
+        radial-gradient(circle at 20% 20%,
+        rgba(50,65,130,.12),
+        transparent 25%),
+        #02030a;
+}
+
+.cosmos::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background-image:
+        radial-gradient(circle,rgba(255,255,255,.8) 1px,transparent 1.5px);
+    background-size:97px 83px;
+    opacity:.35;
+}
+
+
+/* =========================
+   SLIDE 1
+========================= */
+
+#slide1{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.message{
+    position:relative;
+    z-index:5;
+    width:min(90%,650px);
+    text-align:center;
+}
+
+.name{
+    font-size:clamp(17px,3vw,25px);
+    color:#e6a5ff;
+    letter-spacing:4px;
+    margin-bottom:30px;
+    opacity:0;
+    animation:fadeDown 2s ease forwards;
+}
+
+.heading{
+    font-size:clamp(38px,8vw,75px);
+    font-weight:normal;
+    font-style:italic;
+    background:linear-gradient(
+        90deg,
+        #fff,
+        #ff9ed8,
+        #cda5ff,
+        #fff
+    );
+    background-size:250%;
+    -webkit-background-clip:text;
+    color:transparent;
+    animation:
+        fadeUp 2s ease .4s forwards,
+        shimmer 5s linear infinite;
+    opacity:0;
+}
+
+.heart{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width:105px;
+    height:105px;
+    margin:40px auto 30px;
+    cursor:pointer;
+    position:relative;
+    font-size:65px;
+    filter:drop-shadow(0 0 18px #ff55b7);
+    animation:heartBeat 2s infinite;
+}
+
+.heart::before{
+    content:"";
+    position:absolute;
+    inset:8px;
+    border:1px solid rgba(255,130,210,.4);
+    border-radius:50%;
+    animation:ringPulse 2.5s infinite;
+}
+
+.message-text{
+    font-size:clamp(15px,3vw,20px);
+    line-height:2;
+    color:rgba(255,255,255,.75);
+    opacity:0;
+    animation:fadeUp 2s ease 1s forwards;
+}
+
+.message-text strong{
+    color:#ff9ed8;
+    font-weight:normal;
+}
+
+.click{
+    margin-top:28px;
+    font-size:11px;
+    letter-spacing:4px;
+    color:rgba(255,255,255,.35);
+    animation:blink 2s infinite;
+}
+
+
+/* =========================
+   SLIDE 2
+========================= */
+
+#slide2{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.gift-area{
+    position:relative;
+    z-index:4;
+    text-align:center;
+}
+
+.gift-title{
+    font-size:clamp(22px,5vw,38px);
+    font-style:italic;
+    color:#f4c5ff;
+    margin-bottom:45px;
+}
+
+.jar{
+    width:170px;
+    height:220px;
+    margin:auto;
+    position:relative;
+    border:2px solid rgba(255,190,245,.6);
+    border-radius:20px 20px 35px 35px;
+    background:linear-gradient(
+        120deg,
+        rgba(255,255,255,.1),
+        rgba(255,100,200,.03)
+    );
+    box-shadow:
+        0 0 25px rgba(255,100,210,.25),
+        inset 0 0 25px rgba(255,255,255,.05);
+    cursor:pointer;
+}
+
+.jar::before{
+    content:"";
+    position:absolute;
+    width:110px;
+    height:15px;
+    top:-16px;
+    left:50%;
+    transform:translateX(-50%);
+    border:2px solid rgba(255,190,245,.6);
+    border-radius:5px;
+    background:#151020;
+}
+
+.jar-light{
+    position:absolute;
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    background:#fff;
+    box-shadow:
+        0 0 10px #fff,
+        0 0 20px #ff75ca;
+}
+
+.light1{left:35px;top:55px;}
+.light2{right:40px;top:80px;}
+.light3{left:70px;top:125px;}
+.light4{right:55px;top:150px;}
+
+.jar-flower{
+    position:absolute;
+    bottom:40px;
+    left:50%;
+    transform:translateX(-50%);
+    font-size:65px;
+    filter:drop-shadow(0 0 12px #ff82d0);
+}
+
+.tag{
+    position:absolute;
+    right:-65px;
+    top:55px;
+    padding:9px 12px;
+    background:#ffd2ed;
+    color:#4c2341;
+    font-size:11px;
+    transform:rotate(8deg);
+    box-shadow:0 5px 20px rgba(0,0,0,.4);
+}
+
+.next{
+    margin-top:38px;
+    font-size:11px;
+    letter-spacing:3px;
+    color:rgba(255,255,255,.45);
+}
+
+
+/* =========================
+   SLIDE 3 TREE
+========================= */
+
+#slide3{
+    background:#010207;
+}
+
+#treeCanvas{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+}
+
+.tree-caption{
+    position:absolute;
+    top:6%;
+    left:50%;
+    transform:translateX(-50%);
+    z-index:3;
+    text-align:center;
+    opacity:0;
+    animation:captionIn 3s ease 12s forwards;
+}
+
+.tree-caption .main{
+    font-size:clamp(23px,5vw,42px);
+    font-style:italic;
+    color:#f5b8e7;
+    text-shadow:0 0 15px rgba(255,100,210,.5);
+}
+
+.tree-caption .sub{
+    margin-top:9px;
+    font-size:10px;
+    letter-spacing:4px;
+    color:rgba(255,255,255,.4);
+}
+
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(25px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes fadeDown{
+    from{
+        opacity:0;
+        transform:translateY(-20px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes shimmer{
+    0%{background-position:0%;}
+    100%{background-position:250%;}
+}
+
+@keyframes heartBeat{
+    0%,100%{
+        transform:scale(1);
+    }
+    50%{
+        transform:scale(1.12);
+    }
+}
+
+@keyframes ringPulse{
+    0%{
+        transform:scale(.8);
+        opacity:.7;
+    }
+    100%{
+        transform:scale(1.7);
+        opacity:0;
+    }
+}
+
+@keyframes blink{
+    0%,100%{opacity:.25;}
+    50%{opacity:.8;}
+}
+
+@keyframes captionIn{
+    from{
+        opacity:0;
+        transform:translate(-50%,15px);
+    }
+    to{
+        opacity:1;
+        transform:translate(-50%,0);
+    }
+}
+
+
+/* mobile */
+
+@media(max-width:600px){
+
+    .message{
+        width:88%;
+    }
+
+    .message-text{
+        line-height:1.8;
+    }
+
+    .jar{
+        transform:scale(.9);
+    }
+}
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =================================================
+     SLIDE 1
+================================================= -->
+
+<section id="slide1" class="slide active">
+
+    <div class="cosmos"></div>
+
+    <div class="message">
+
+        <div class="name">
+            Mahima Ji ♡
+        </div>
+
+        <div class="heading">
+            This is for you ❤️
+        </div>
+
+        <div class="message-text">
+
+            <p>
+                Main tumhare saamne aake<br>
+                kuch de nahi paa raha hu,
+                itni dur se...
+            </p>
+
+            <p>
+                to tumhare liye
+                <strong>ye chhota sa kuch</strong> hai ji. ♡
+            </p>
+
+            <p>
+                Dekho... aapko pasand aata hai ya nahi ✨
+            </p>
+
+        </div>
+
+        <div class="heart" onclick="goToSlide2()">
+            ❤️
+        </div>
+
+        <div class="click">
+            TAP THE HEART
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =================================================
+     SLIDE 2
+================================================= -->
+
+<section id="slide2" class="slide">
+
+    <div class="cosmos"></div>
+
+    <div class="gift-area">
+
+        <div class="gift-title">
+            Ek chhota sa surprise... ✨
+        </div>
+
+        <div class="jar" onclick="goToSlide3()">
+
+            <div class="jar-light light1"></div>
+            <div class="jar-light light2"></div>
+            <div class="jar-light light3"></div>
+            <div class="jar-light light4"></div>
+
+            <div class="jar-flower">
+                🌸
+            </div>
+
+            <div class="tag">
+                For Mahima ♡
+            </div>
+
+        </div>
+
+        <div class="next">
+            CLICK THE LITTLE GIFT
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =================================================
+     SLIDE 3
+================================================= -->
+
+<section id="slide3" class="slide">
+
+    <canvas id="treeCanvas"></canvas>
+
+    <div class="tree-caption">
+
+        <div class="main">
+            For you... ♡
+        </div>
+
+        <div class="sub">
+            made with a little code &amp; a lot of feeling
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<script>
+
+/* =====================================================
+   SLIDE SYSTEM
+===================================================== */
+
+function changeSlide(from,to){
+
+    document.getElementById(from).classList.remove("active");
+
+    setTimeout(()=>{
+        document.getElementById(to).classList.add("active");
+    },500);
+}
+
+function goToSlide2(){
+    changeSlide("slide1","slide2");
+}
+
+function goToSlide3(){
+
+    changeSlide("slide2","slide3");
+
+    setTimeout(()=>{
+        startTree();
+    },1000);
+}
+
+
+
+/* =====================================================
+   TREE CANVAS
+===================================================== */
+
+const canvas=document.getElementById("treeCanvas");
+const ctx=canvas.getContext("2d");
+
+let W,H,dpr;
+let treeStarted=false;
+let branches=[];
+let flowers=[];
+let roots=[];
+let stars=[];
+
+let startTime=0;
+
+
+/* =========================
+   RESIZE
+========================= */
+
+function resizeCanvas(){
+
+    dpr=Math.min(window.devicePixelRatio || 1,2);
+
+    W=window.innerWidth;
+    H=window.innerHeight;
+
+    canvas.width=W*dpr;
+    canvas.height=H*dpr;
+
+    canvas.style.width=W+"px";
+    canvas.style.height=H+"px";
+
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+
+    makeScene();
+}
+
+window.addEventListener("resize",resizeCanvas);
+
+
+
+/* =====================================================
+   SCENE CREATION
+===================================================== */
+
+function makeScene(){
+
+    branches=[];
+    flowers=[];
+    roots=[];
+    stars=[];
+
+    /*
+       stars
+    */
+
+    for(let i=0;i<100;i++){
+
+        stars.push({
+            x:Math.random()*W,
+            y:Math.random()*H,
+            r:.4+Math.random()*1.2,
+            alpha:.2+Math.random()*.7,
+            phase:Math.random()*6.28
+        });
+    }
+
+
+    const cx=W/2;
+
+    /*
+       TREE BASE
+    */
+
+    const baseY=H*.83;
+
+
+    /*
+       ROOTS
+    */
+
+    for(let i=0;i<28;i++){
+
+        const angle=Math.PI*2*i/28;
+        const length=30+Math.random()*105;
+
+        roots.push({
+            x:cx,
+            y:baseY,
+            x2:cx+Math.cos(angle)*length,
+            y2:baseY+Math.sin(angle)*length*.30,
+            delay:i*.08
+        });
+    }
+
+
+    /*
+       MAIN TRUNK
+    */
+
+    addBranch(
+        cx,
+        baseY,
+        cx,
+        H*.31,
+        14,
+        "#a66b24",
+        0,
+        5
+    );
+
+
+    /*
+       LARGE GREEN BRANCHES
+    */
+
+    addBranch(cx,H*.58,cx-W*.21,H*.40,5,"#65dc3b",4.5,3);
+    addBranch(cx,H*.55,cx+W*.21,H*.39,5,"#65dc3b",4.9,3);
+
+    addBranch(cx,H*.47,cx-W*.16,H*.31,4.5,"#63db3c",5.5,2.8);
+    addBranch(cx,H*.45,cx+W*.17,H*.30,4.5,"#63db3c",5.9,2.8);
+
+    addBranch(cx,H*.37,cx-W*.10,H*.23,4,"#6ae342",6.5,2.5);
+    addBranch(cx,H*.35,cx+W*.11,H*.22,4,"#6ae342",6.9,2.5);
+
+
+    /*
+       LEFT SIDE
+    */
+
+    addBranch(
+        cx-W*.21,H*.40,
+        cx-W*.30,H*.35,
+        3,
+        "#59ce3b",
+        7.1,2
+    );
+
+    addBranch(
+        cx-W*.21,H*.40,
+        cx-W*.33,H*.43,
+        2.5,
+        "#59ce3b",
+        7.4,2
+    );
+
+    addBranch(
+        cx-W*.16,H*.31,
+        cx-W*.25,H*.26,
+        2.8,
+        "#59ce3b",
+        7.8,2
+    );
+
+    addBranch(
+        cx-W*.16,H*.31,
+        cx-W*.20,H*.20,
+        2.5,
+        "#59ce3b",
+        8.1,2
+    );
+
+
+    /*
+       RIGHT SIDE
+    */
+
+    addBranch(
+        cx+W*.21,H*.39,
+        cx+W*.30,H*.34,
+        3,
+        "#59ce3b",
+        7.2,2
+    );
+
+    addBranch(
+        cx+W*.21,H*.39,
+        cx+W*.33,H*.42,
+        2.5,
+        "#59ce3b",
+        7.5,2
+    );
+
+    addBranch(
+        cx+W*.17,H*.30,
+        cx+W*.26,H*.25,
+        2.8,
+        "#59ce3b",
+        7.9,2
+    );
+
+    addBranch(
+        cx+W*.17,H*.30,
+        cx+W*.21,H*.20,
+        2.5,
+        "#59ce3b",
+        8.2,2
+    );
+
+
+    /*
+       TOP BRANCHES
+    */
+
+    addBranch(
+        cx-W*.10,H*.23,
+        cx-W*.16,H*.17,
+        2.5,
+        "#60d83e",
+        8.5,2
+    );
+
+    addBranch(
+        cx-W*.10,H*.23,
+        cx-W*.05,H*.14,
+        2.3,
+        "#60d83e",
+        8.8,2
+    );
+
+    addBranch(
+        cx+W*.11,H*.22,
+        cx+W*.17,H*.16,
+        2.5,
+        "#60d83e",
+        8.6,2
+    );
+
+    addBranch(
+        cx+W*.11,H*.22,
+        cx+W*.06,H*.13,
+        2.3,
+        "#60d83e",
+        8.9,2
+    );
+
+
+    /*
+       OUTER TWIGS
+    */
+
+    const twigs=[
+
+        [-.30,.35,-.36,.30],
+        [-.30,.35,-.38,.36],
+        [-.33,.43,-.38,.40],
+
+        [-.25,.26,-.31,.22],
+        [-.25,.26,-.28,.18],
+        [-.20,.20,-.25,.15],
+
+        [-.16,.17,-.21,.12],
+        [-.05,.14,-.08,.09],
+
+        [.30,.34,.36,.29],
+        [.30,.34,.38,.36],
+        [.33,.42,.38,.39],
+
+        [.26,.25,.32,.21],
+        [.26,.25,.29,.17],
+        [.21,.20,.26,.15],
+
+        [.17,.16,.22,.11],
+        [.06,.13,.09,.08]
+    ];
+
+    twigs.forEach((t,i)=>{
+
+        addBranch(
+            cx+W*t[0],
+            H*t[1],
+            cx+W*t[2],
+            H*t[3],
+            1.7,
+            "#58d53c",
+            9.1+i*.13,
+            1.5
+        );
+    });
+
+
+    /*
+       FLOWERS
+    */
+
+    const flowerPoints=[
+
+        [-.38,.36],[-.36,.30],[-.38,.40],
+        [-.31,.22],[-.28,.18],[-.25,.15],
+        [-.21,.12],[-.16,.12],[-.08,.09],
+        [-.05,.09],
+
+        [.38,.36],[.36,.29],[.38,.40],
+        [.32,.21],[.29,.17],[.26,.15],
+        [.22,.11],[.17,.11],[.09,.08],
+        [.06,.08],
+
+        [-.27,.25],[-.20,.20],[-.13,.18],
+        [.27,.24],[.20,.19],[.13,.17],
+
+        [-.23,.30],[-.10,.25],[-.03,.21],
+        [.23,.29],[.10,.24],[.03,.20]
+    ];
+
+    flowerPoints.forEach((p,i)=>{
+
+        flowers.push({
+            x:cx+W*p[0],
+            y:H*p[1],
+            size:3+Math.random()*3,
+            color:i%3===0?"pink":i%3===1?"blue":"peach",
+            delay:11+i*.16
+        });
+    });
+}
+
+
+/* =====================================================
+   ADD BRANCH
+===================================================== */
+
+function addBranch(
+    x1,y1,x2,y2,width,color,delay,duration
+){
+
+    branches.push({
+        x1,y1,x2,y2,
+        width,
+        color,
+        delay,
+        duration
+    });
+}
+
+
+/* =====================================================
+   DRAW STARS
+===================================================== */
+
+function drawStars(t){
+
+    stars.forEach(s=>{
+
+        const alpha=
+            s.alpha+
+            Math.sin(t*.002+s.phase)*.2;
+
+        ctx.save();
+
+        ctx.globalAlpha=Math.max(.05,alpha);
+
+        ctx.beginPath();
+        ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+
+        ctx.fillStyle="#fff";
+        ctx.fill();
+
+        ctx.restore();
+    });
+}
+
+
+/* =====================================================
+   DRAW GROUND RINGS
+===================================================== */
+
+function drawRings(){
+
+    const cx=W/2;
+    const cy=H*.83;
+
+    ctx.save();
+
+    for(let i=0;i<6;i++){
+
+        ctx.beginPath();
+
+        ctx.ellipse(
+            cx,
+            cy,
+            W*(.19+i*.07),
+            15+i*6,
+            0,
+            0,
+            Math.PI*2
+        );
+
+        ctx.lineWidth=1;
+
+        ctx.strokeStyle=
+            i%2===0
+            ?"rgba(75,190,100,.4)"
+            :"rgba(190,130,50,.38)";
+
+        ctx.shadowBlur=4;
+
+        ctx.stroke();
+    }
+
+    ctx.restore();
+}
+
+
+/* =====================================================
+   DRAW ROOTS
+===================================================== */
+
+function drawRoots(t){
+
+    roots.forEach(r=>{
+
+        const p=Math.min(
+            Math.max((t-r.delay-4)/3,0),
+            1
+        );
+
+        if(p<=0)return;
+
+        const x=r.x+(r.x2-r.x)*p;
+        const y=r.y+(r.y2-r.y)*p;
+
+        ctx.save();
+
+        ctx.beginPath();
+        ctx.moveTo(r.x,r.y);
+        ctx.lineTo(x,y);
+
+        ctx.lineWidth=1.1;
+        ctx.lineCap="round";
+
+        ctx.strokeStyle="#b17b27";
+        ctx.shadowBlur=5;
+        ctx.shadowColor="#c89035";
+
+        ctx.stroke();
+
+        ctx.restore();
+    });
+}
+
+
+/* =====================================================
+   DRAW BRANCHES
+===================================================== */
+
+function drawBranches(t){
+
+    branches.forEach(b=>{
+
+        const p=Math.min(
+            Math.max((t-b.delay)/b.duration,0),
+            1
+        );
+
+        if(p<=0)return;
+
+        const x=
+            b.x1+
+            (b.x2-b.x1)*p;
+
+        const y=
+            b.y1+
+            (b.y2-b.y1)*p;
+
+        ctx.save();
+
+        ctx.beginPath();
+
+        ctx.moveTo(b.x1,b.y1);
+        ctx.lineTo(x,y);
+
+        ctx.lineCap="round";
+
+        ctx.lineWidth=b.width;
+
+        ctx.strokeStyle=b.color;
+
+        ctx.shadowBlur=
+            b.width>4 ? 9 : 5;
+
+        ctx.shadowColor=b.color;
+
+        ctx.stroke();
+
+        ctx.restore();
+    });
+}
+
+
+/* =====================================================
+   DRAW FLOWERS
+===================================================== */
+
+function drawFlowers(t){
+
+    flowers.forEach(f=>{
+
+        const p=Math.min(
+            Math.max((t-f.delay)/1.5,0),
+            1
+        );
+
+        if(p<=0)return;
+
+        const sway=
+            Math.sin(t*.002+f.x)*1.5;
+
+        const x=f.x+sway;
+        const y=f.y;
+
+        let main;
+
+        if(f.color==="pink")
+            main="#ff8fc8";
+        else if(f.color==="blue")
+            main="#83e9ff";
+        else
+            main="#ffad91";
+
+        ctx.save();
+
+        ctx.globalAlpha=p;
+
+        ctx.shadowBlur=12;
+        ctx.shadowColor=main;
+
+        /*
+           five petals
+        */
+
+        for(let i=0;i<5;i++){
+
+            const a=
+                i*Math.PI*2/5;
+
+            ctx.beginPath();
+
+            ctx.arc(
+                x+Math.cos(a)*f.size*.8,
+                y+Math.sin(a)*f.size*.8,
+                f.size*.65*p,
+                0,
+                Math.PI*2
+            );
+
+            ctx.fillStyle=main;
+            ctx.fill();
+        }
+
+        /*
+           flower center
+        */
+
+        ctx.beginPath();
+
+        ctx.arc(
+            x,
+            y,
+            f.size*.32*p,
+            0,
+            Math.PI*2
+        );
+
+        ctx.fillStyle="#fff2a6";
+
+        ctx.shadowBlur=7;
+        ctx.shadowColor="#fff2a6";
+
+        ctx.fill();
+
+        ctx.restore();
+    });
+}
+
+
+/* =====================================================
+   TREE ANIMATION
+===================================================== */
+
+function animateTree(now){
+
+    if(!treeStarted)return;
+
+    const t=(now-startTime)/1000;
+
+    ctx.clearRect(0,0,W,H);
+
+
+    /*
+       cosmic background
+    */
+
+    const bg=ctx.createRadialGradient(
+        W/2,H*.45,0,
+        W/2,H*.45,W*.75
+    );
+
+    bg.addColorStop(0,"#0b1020");
+    bg.addColorStop(.5,"#03040c");
+    bg.addColorStop(1,"#010107");
+
+    ctx.fillStyle=bg;
+    ctx.fillRect(0,0,W,H);
+
+
+    /*
+       stars
+    */
+
+    drawStars(t);
+
+
+    /*
+       ground
+    */
+
+    drawRings();
+
+
+    /*
+       roots
+    */
+
+    drawRoots(t);
+
+
+    /*
+       branches
+    */
+
+    drawBranches(t);
+
+
+    /*
+       flowers
+    */
+
+    drawFlowers(t);
+
+
+    requestAnimationFrame(animateTree);
+}
+
+
+/* =====================================================
+   START TREE
+===================================================== */
+
+function startTree(){
+
+    if(treeStarted)return;
+
+    treeStarted=true;
+    startTime=performance.now();
+
+    requestAnimationFrame(animateTree);
+}
+
+
+/* =====================================================
+   INITIALIZE
+===================================================== */
+
+resizeCanvas();
+
+</script>
+
+</body>
+</html>
