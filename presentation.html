@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Private Phone 🔒</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial, sans-serif;
+    overflow:hidden;
+    background:#080808;
+    color:white;
+}
+
+/* =========================
+   COMMON
+========================= */
+
+.page{
+    width:100vw;
+    height:100vh;
+    display:none;
+    position:relative;
+    overflow:hidden;
+}
+
+.page.active{
+    display:flex;
+}
+
+/* =========================
+   LOCK SCREEN
+========================= */
+
+#lock{
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+
+    background:
+    radial-gradient(circle at 50% 20%,#39405f,#10111c 45%,#050505);
+}
+
+.time{
+    position:absolute;
+    top:55px;
+    text-align:center;
+    font-size:70px;
+    font-weight:200;
+}
+
+.date{
+    position:absolute;
+    top:135px;
+    font-size:17px;
+    opacity:.8;
+}
+
+.lock-icon{
+    margin-top:120px;
+    font-size:45px;
+    animation:lockFloat 2s infinite ease-in-out;
+}
+
+@keyframes lockFloat{
+    50%{
+        transform:translateY(-7px);
+    }
+}
+
+.subtitle{
+    margin-top:15px;
+    opacity:.65;
+    font-size:14px;
+}
+
+.password-box{
+    margin-top:25px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+input{
+    width:230px;
+    padding:15px;
+    border-radius:15px;
+    border:1px solid #ffffff35;
+    background:#ffffff12;
+    color:white;
+    outline:none;
+    text-align:center;
+    font-size:20px;
+    letter-spacing:7px;
+}
+
+.unlock{
+    margin-top:15px;
+    padding:12px 30px;
+    border:none;
+    border-radius:25px;
+    background:white;
+    color:#111;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.unlock:hover{
+    transform:scale(1.06);
+}
+
+#error{
+    margin-top:15px;
+    color:#ff6868;
+    font-size:14px;
+    min-height:20px;
+}
+
+/* =========================
+   WRONG PASSWORD
+========================= */
+
+#wrong{
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    background:
+    radial-gradient(circle,#461515,#100505 55%,#000);
+}
+
+.angry{
+    font-size:90px;
+    animation:shake .5s infinite;
+}
+
+@keyframes shake{
+    0%,100%{transform:rotate(0)}
+    25%{transform:rotate(-7deg)}
+    75%{transform:rotate(7deg)}
+}
+
+.wrong-title{
+    margin-top:20px;
+    font-size:32px;
+}
+
+.wrong-text{
+    margin-top:15px;
+    color:#ff9b9b;
+    font-size:18px;
+    text-align:center;
+}
+
+.try{
+    margin-top:30px;
+    padding:12px 25px;
+    border:none;
+    border-radius:25px;
+    cursor:pointer;
+}
+
+/* =========================
+   PAGE 2
+========================= */
+
+#page2{
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    background:
+    linear-gradient(135deg,#171329,#39204e,#101018);
+}
+
+.warning{
+    font-size:70px;
+    animation:bounce 1.5s infinite;
+}
+
+@keyframes bounce{
+    50%{transform:translateY(-12px)}
+}
+
+.card{
+    width:min(500px,85%);
+    margin-top:25px;
+    padding:35px;
+    border-radius:25px;
+    background:#ffffff12;
+    border:1px solid #ffffff20;
+    box-shadow:0 20px 50px #0008;
+    text-align:center;
+    backdrop-filter:blur(10px);
+}
+
+.card h1{
+    font-size:28px;
+    margin-bottom:18px;
+}
+
+.card p{
+    line-height:1.7;
+    font-size:18px;
+}
+
+/* =========================
+   PAGE 3
+========================= */
+
+#page3{
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    background:
+    radial-gradient(circle at 20% 20%,#283b55,#0c1119 55%);
+}
+
+.chat{
+    width:min(500px,85%);
+}
+
+.message{
+    padding:16px 20px;
+    border-radius:20px;
+    margin:15px 0;
+    width:fit-content;
+    max-width:90%;
+    font-size:17px;
+    line-height:1.5;
+}
+
+.left{
+    background:#262d3b;
+    border-bottom-left-radius:5px;
+}
+
+.right{
+    margin-left:auto;
+    background:#3d2862;
+    border-bottom-right-radius:5px;
+}
+
+.typing{
+    color:#aaa;
+    font-size:13px;
+    margin-top:10px;
+}
+
+/* =========================
+   PAGE 4
+========================= */
+
+#page4{
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    background:
+    linear-gradient(140deg,#301d12,#17110d,#050505);
+}
+
+.roast{
+    font-size:80px;
+}
+
+.roast-title{
+    margin-top:20px;
+    font-size:34px;
+}
+
+.roast-text{
+    width:min(550px,85%);
+    text-align:center;
+    margin-top:20px;
+    font-size:20px;
+    line-height:1.7;
+}
+
+/* =========================
+   PAGE 5
+========================= */
+
+#page5{
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    background:
+    radial-gradient(circle at 50% 40%,#56345f,#16111d 60%,#050505);
+}
+
+.final-emoji{
+    font-size:75px;
+    animation:heart 1.2s infinite;
+}
+
+@keyframes heart{
+    50%{
+        transform:scale(1.15);
+    }
+}
+
+.final{
+    width:min(600px,85%);
+    text-align:center;
+}
+
+.final h1{
+    margin-top:20px;
+    font-size:32px;
+}
+
+.final p{
+    margin-top:20px;
+    line-height:1.8;
+    font-size:19px;
+}
+
+.next{
+    margin-top:30px;
+    padding:12px 28px;
+    border:none;
+    border-radius:25px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+/* =========================
+   PARTICLES
+========================= */
+
+.particle{
+    position:absolute;
+    width:5px;
+    height:5px;
+    background:white;
+    border-radius:50%;
+    opacity:.3;
+    animation:float 7s linear infinite;
+}
+
+@keyframes float{
+    from{
+        transform:translateY(100vh);
+    }
+    to{
+        transform:translateY(-20vh);
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- =========================
+     LOCK SCREEN
+========================= -->
+
+<div class="page active" id="lock">
+
+    <div class="time" id="time">12:00</div>
+
+    <div class="date">
+        🔒 Private Device
+    </div>
+
+    <div class="lock-icon">
+        🔐
+    </div>
+
+    <div class="subtitle">
+        Enter password to unlock
+    </div>
+
+    <div class="password-box">
+
+        <input
+            type="password"
+            id="password"
+            maxlength="4"
+            placeholder="••••"
+        >
+
+        <button class="unlock" onclick="checkPassword()">
+            Unlock
+        </button>
+
+        <div id="error"></div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     WRONG PASSWORD
+========================= -->
+
+<div class="page" id="wrong">
+
+    <div class="angry">😤</div>
+
+    <div class="wrong-title">
+        OYE CHOTI! 😂
+    </div>
+
+    <div class="wrong-text">
+        Choti, isse tu nahi khol payegi 😭<br>
+        Password galat hai madam!
+    </div>
+
+    <button class="try" onclick="backToLock()">
+        Dobara Try Kar 😌
+    </button>
+
+</div>
+
+
+<!-- =========================
+     PAGE 2
+========================= -->
+
+<div class="page" id="page2">
+
+    <div class="warning">
+        ⚠️
+    </div>
+
+    <div class="card">
+
+        <h1>Choti Bacchi Alert 🚨</h1>
+
+        <p>
+            Choti bacchi aajkal kuch zyada hi gussa karti hai 😂
+            <br><br>
+            Har baat pe attitude,
+            har baat pe gussa...
+            <br><br>
+            Thoda shaant raha kar madam 😭
+        </p>
+
+    </div>
+
+    <button class="next" onclick="showPage('page3')">
+        Aage Dekh 👀 →
+    </button>
+
+</div>
+
+
+<!-- =========================
+     PAGE 3
+========================= -->
+
+<div class="page" id="page3">
+
+    <div class="chat">
+
+        <div class="message left">
+            Oyee choti 😂
+        </div>
+
+        <div class="message left">
+            Ek baat bolu?
+        </div>
+
+        <div class="message right">
+            Kya? 😑
+        </div>
+
+        <div class="message left">
+            Tu itna gussa kyun karti hai? 😭
+        </div>
+
+        <div class="message right">
+            😤
+        </div>
+
+        <div class="typing">
+            Choti is typing... 😂
+        </div>
+
+    </div>
+
+    <button class="next" onclick="showPage('page4')">
+        Next 😂
+    </button>
+
+</div>
+
+
+<!-- =========================
+     PAGE 4
+========================= -->
+
+<div class="page" id="page4">
+
+    <div class="roast">
+        😂
+    </div>
+
+    <div class="roast-title">
+        Ek Important Announcement 📢
+    </div>
+
+    <div class="roast-text">
+
+        <b>Choti madam ko suchit kiya jata hai...</b>
+
+        <br><br>
+
+        Bauni bolne par gussa hona,
+        <br>
+        phir gusse mein aur cute lagna,
+        <br>
+        aur phir kehna "main gussa nahi hoon" 😂
+
+        <br><br>
+
+        Ye sab band karo madam 😭
+
+    </div>
+
+    <button class="next" onclick="showPage('page5')">
+        Last Page 👀
+    </button>
+
+</div>
+
+
+<!-- =========================
+     PAGE 5
+========================= -->
+
+<div class="page" id="page5">
+
+    <div class="final">
+
+        <div class="final-emoji">
+            😌😂
+        </div>
+
+        <h1>
+            Final Warning, Choti 👀
+        </h1>
+
+        <p>
+
+            Choti bacchi, sudhar ja...
+            <br>
+            aajkal kuch zyada hi gussa karti hai 😂
+            <br><br>
+
+            Itna gussa achha nahi hota madam.
+            <br><br>
+
+            Nahi sudhri to phir
+            <b>baith ke samjhana padega ache se 😌😂</b>
+
+            <br><br>
+
+            Ab ja... gussa mat hona 😭
+
+        </p>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* =========================
+   PASSWORD
+========================= */
+
+function checkPassword(){
+
+    const password =
+        document.getElementById("password").value;
+
+    /*
+       Password:
+       0209
+
+       NOTE:
+       Password page par kahin display nahi kiya gaya.
+    */
+
+    if(password === "0209"){
+
+        showPage("page2");
+
+    }else{
+
+        showPage("wrong");
+
+        document.getElementById("password").value="";
+
+    }
+}
+
+
+/* =========================
+   SHOW PAGE
+========================= */
+
+function showPage(page){
+
+    document.querySelectorAll(".page")
+    .forEach(p => p.classList.remove("active"));
+
+    document.getElementById(page)
+    .classList.add("active");
+
+}
+
+
+/* =========================
+   BACK TO LOCK
+========================= */
+
+function backToLock(){
+
+    showPage("lock");
+
+}
+
+
+/* =========================
+   ENTER KEY
+========================= */
+
+document
+.getElementById("password")
+.addEventListener("keydown",function(e){
+
+    if(e.key === "Enter"){
+        checkPassword();
+    }
+
+});
+
+
+/* =========================
+   LIVE TIME
+========================= */
+
+function updateTime(){
+
+    const now = new Date();
+
+    let h = now.getHours();
+    let m = now.getMinutes();
+
+    h = String(h).padStart(2,"0");
+    m = String(m).padStart(2,"0");
+
+    document.getElementById("time").innerText =
+        h + ":" + m;
+
+}
+
+updateTime();
+
+setInterval(updateTime,1000);
+
+
+/* =========================
+   FLOATING PARTICLES
+========================= */
+
+for(let i=0;i<25;i++){
+
+    const p =
+        document.createElement("div");
+
+    p.className="particle";
+
+    p.style.left =
+        Math.random()*100 + "%";
+
+    p.style.animationDelay =
+        Math.random()*7 + "s";
+
+    document.body.appendChild(p);
+
+}
+
+</script>
+
+</body>
+</html>
